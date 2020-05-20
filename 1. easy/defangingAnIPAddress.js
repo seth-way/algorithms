@@ -15,5 +15,5 @@ Output: "255[.]100[.]50[.]0"
 */
 
 const defangIPaddr = (address) => (
-  address.split('.').join('[.]')
+  address.replace(/\./g, '[.]')
 );
