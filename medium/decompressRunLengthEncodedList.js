@@ -24,18 +24,16 @@ At the end the concatenation [2] + [4,4,4] is [2,4,4,4].
 
 const decompressList = (nums) => {
   const result = [];
-
-  if (!nums.length) {
-    return result;
-  }
-
-  for (let i = 0; i < nums.length; i += 2) {
-      let count = nums[i + 1];
-      while(count > 0) {
-          result.push(nums[i]);
-          count -= 1;
+    
+  nums.forEach((val, idx) => {
+    if (idx % 2 === 0) {
+      let iterator = val;
+      while (iterator > 0) {
+        result.push(nums[idx + 1]);
+        iterator -= 1;
       }
-  }
-
+    }
+  });
+    
   return result;
 }
