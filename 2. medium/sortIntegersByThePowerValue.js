@@ -57,6 +57,7 @@ Constraints:
 1 <= k <= hi - lo + 1
 */
 
+
 const getStepsToOne = (n, steps = 0) => {
   if (n === 1) {
     return steps;
