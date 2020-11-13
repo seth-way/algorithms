@@ -48,19 +48,16 @@ s only contains lower case English letters.
  */
 const removeDuplicates = (s, k) => {
     let result = s;
-    let slicePoints = []; // holds indices of locations to remove from string
     let consecutive = 1; // tracks consecutive chars
-    let lastChar = s[0]; 
+    let lastChar = s[s.length - 1]; 
 
-    for (let i = 1; i < s.length; i += 1) {
+    for (let i = s.length - 2; i >= 0; i -= 1) {
         if (s[i] === lastChar) {
             consecutive += 1;
             if (consecutive === k) {
-                // push start of string to remove, end of string to remove
-                slicePoints.push([i - k + 1, i + 1]);
-                // reset consecutive and lastChar
+                result = result.slice(0, i) + result.slice(i + k);
                 consecutive = 0;
-                lastChar = s[i + 1];
+                lastChar = s[i - 1];
             }
         } else {
             consecutive = 1;
@@ -68,13 +65,7 @@ const removeDuplicates = (s, k) => {
         }
     }
     
-    let nextToDelete;
-    // remove subStrings using slicePoints array
-    while (slicePoints.length) {
-        nextToDelete = slicePoints.pop();
-        result = result.slice(0, nextToDelete[0]) + result.slice(nextToDelete[1]);
-    }
-    
     // recursively execute method until result is no longer updated
     return s.length === result.length ? s : removeDuplicates(result, k);
 };
+
