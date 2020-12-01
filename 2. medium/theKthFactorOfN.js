@@ -62,8 +62,8 @@ const kthFactor = (n, k) => {
     let i = 0;
     
     while (++i <= n) {
-        // if over i is greater than 1/2 n
-        // and more than 1 factor remains...
+        // if i is greater than 1/2 n and
+        // more than 1 factor remains unfound...
         // break loop
         if (i > n / 2 && k - factor > 1) break;
         
